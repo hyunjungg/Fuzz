@@ -113,8 +113,7 @@ uint64_t prepareArg(Json::Value* argJson) {
     size = argJson->get("size", NULL).asInt();
     ptr = (uint64_t*)alloc(size);
     contentJson = argJson->get("val", NULL);
-
-    if (contentJson.size() != 0) {  // byte array 인 경우
+    if (contentJson.isArray()) {  // byte array 인 경우
 
         for (size_t index = 0; index < contentJson.size(); index++) {
             byte value = contentJson.get(index, NULL).asUInt();

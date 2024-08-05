@@ -12,7 +12,7 @@
     },
     "arg2": { 
       "kind": "dword",
-      "val": 2148532224
+      "val": 2148532480
     },
     "arg3" : {
       "kind": "struct",
@@ -118,6 +118,65 @@
   },
 
   {
+    "name": "NtSetInformationFile",
+    "sysnum": 39,  
+    "argnum": 5,
+    "idx": 2,
+    "arg1": {
+      "kind": "retval",
+      "id" : 0,
+      "val": 0
+    },
+    "arg2": {
+      "kind": "outptr",
+      "id" : 4,
+      "size" : 16,
+      "val": 0
+    },
+    "arg3": {
+      "kind": "struct",
+      "size" : 40,
+      "val": [
+        {
+          "offset" : 0,
+          "kind": "qword",
+          "val": 2081186287161241600
+        },
+        {
+          "offset" : 8,
+          "kind": "qword",
+          "val": 18446744073709551615 
+        },
+        {
+          "offset" : 16,
+          "kind": "qword",
+          "val": 18446744073709551615 
+        },
+        {
+          "offset" : 24,
+          "kind": "qword",
+          "val": 18446744073709551615 
+        },
+        {
+          "offset" : 32,
+          "kind": "dword",
+          "val": 0 
+        }
+      ]
+
+    },
+    "arg4" : {
+      "kind": "dword",
+      "val": 40
+    },
+    "arg5" : {
+      "kind": "dword",
+      "val": 4
+    }
+
+  },
+
+  {
     "name": "NtReadFile",
     "sysnum": 6,  
     "argnum": 9,
@@ -184,10 +243,6 @@
       "val": 0
     }
   }
-    
-
-
-
 
 ]
  

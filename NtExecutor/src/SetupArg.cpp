@@ -14,7 +14,6 @@
 
 
 void nop(void) {
-
 }
 
 //

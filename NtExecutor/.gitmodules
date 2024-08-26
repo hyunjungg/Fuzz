@@ -1,3 +1,0 @@
-[submodule "jsoncpp"]
-	path = jsoncpp
-	url = git@softsec.kaist.ac.kr:NtGenFuzz/jsoncpp.git

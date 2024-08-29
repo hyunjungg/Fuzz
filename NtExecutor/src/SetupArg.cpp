@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include "json/json.h"
-#include <Windows.h>
+#include <windows.h>
 #include "Config.h"
 #include "Alloc.h"
 #include "Output.h"

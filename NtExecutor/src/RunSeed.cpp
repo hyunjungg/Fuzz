@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include "json/json.h"
-#include <Windows.h>
+#include <windows.h>
 #include <winternl.h>
 #include "Config.h"
 #include "SyscallWrapper.h"

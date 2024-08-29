@@ -1,6 +1,6 @@
 CC = x86_64-w64-mingw32-g++
 
-CFLAGS = -Wall -I"include" -mWindows
+CFLAGS = -Wall -I"include" -mwindows
 
 LDFLAGS = -lntdll -lpsapi
 

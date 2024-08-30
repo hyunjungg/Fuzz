@@ -45,14 +45,14 @@ asm volatile (
     "mov %%rax, 80(%%rsp)\n\t"     // RAX를 RSP+80에 저장
     "mov %[arg11], %%rax\n\t"      // arg11을 임시로 RAX에 저장
     "mov %%rax, 88(%%rsp)\n\t"     // RAX를 RSP+88에 저장
-    "mov SysId, %%rax\n\t"         // SysId 값을 RAX로 이동 (전역 변수)
+    "mov %[sysid], %%rax\n\t"         // SysId 값을 RAX로 이동 (전역 변수)
     "mov %%rcx, %%r10\n\t"         // RCX 값을 R10으로 이동
     "syscall\n\t"                  // 시스템 호출
     "add $88, %%rsp\n\t"           // 스택 복원 (할당한 스택 프레임 제거)
     : "=a" (result)                // 결과는 RAX에 저장됨
     : [arg1] "g" (arg1), [arg2] "g" (arg2), [arg3] "g" (arg3), [arg4] "g" (arg4),
       [arg5] "g" (arg5), [arg6] "g" (arg6), [arg7] "g" (arg7), [arg8] "g" (arg8),
-      [arg9] "g" (arg9), [arg10] "g" (arg10), [arg11] "g" (arg11)
+      [arg9] "g" (arg9), [arg10] "g" (arg10), [arg11] "g" (arg11), [sysid] "m" (SysId)
     : "rsp", "r10", "r11", "rcx", "rdx", "r8", "r9", "memory"
 );
 

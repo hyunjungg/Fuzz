@@ -1,8 +1,8 @@
 CC = x86_64-w64-mingw32-g++
 
-CFLAGS = -Wall -I"include" -mwindows
+CFLAGS = -Wall -I"include" -mwindows -static
 
-LDFLAGS = -lntdll -lpsapi
+LDFLAGS =
 
 TARGET = bin/NtExecutor.exe
 

@@ -11,7 +11,8 @@
 #include "Output.h"
 #include "SetupArg.h"
 #include "RunSeed.h"
-# include <stdarg.h>
+#include <stdarg.h>
+#include "nyx_api.h"
 
 
 extern "C"
@@ -82,14 +83,14 @@ void runSyscall(Json::Value* syscallJson) {
   strncpy(curName, syscallJson->get("name", NULL).asCString(), SYSNAME_MAXLEN);
   sysNum = syscallJson->get("sysnum", NULL).asInt();
   argNum = syscallJson->get("argnum", NULL).asInt();
-  printf("name: %s, sysnum = %d, argnum = %d\n", curName, sysNum, argNum);
+  hprintf("name: %s, sysnum = %d, argnum = %d\n", curName, sysNum, argNum);
 
   // Setup arguments.
   for (i = 0; i < argNum; i++) {
     snprintf(argName, sizeof(argName), "arg%d", i + 1);
     argJson = syscallJson->get(argName, NULL);
     args[i] = prepareArg(&argJson);
-    printf("arg%d: 0x%x\n", i + 1, args[i]);
+    hprintf("arg%d: 0x%x\n", i + 1, args[i]);
   }
 
   for (i; i < SYSARG_MAXNUM; i++) {
@@ -97,11 +98,11 @@ void runSyscall(Json::Value* syscallJson) {
   }
 
   // Invoke syscall and save the return value.
-  printf("Invoke syscall...\n");
+  hprintf("Invoke syscall...\n");
 
   SysId = sysNum;
   status = _NtWrapperArg(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8], args[9], args[10]);
-  printf("Return value: 0x%x\n\n", status);
+  hprintf("Return value: 0x%x\n\n", status);
 
 
 }

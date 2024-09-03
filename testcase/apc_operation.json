@@ -1,7 +1,7 @@
 [
     {
       "name": "NtCreateThreadEx",
-      "sysnum": 199,  
+      "sysnum": 194,
       "argnum": 11,
       "idx": 0,
       "arg1": {

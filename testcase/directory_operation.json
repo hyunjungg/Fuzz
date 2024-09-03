@@ -80,7 +80,7 @@
     },
     {
       "name": "NtQueryDirectoryObject",
-      "sysnum": 332,
+      "sysnum": 324,
       "argnum": 7,
       "idx": 0,
       "arg1": {

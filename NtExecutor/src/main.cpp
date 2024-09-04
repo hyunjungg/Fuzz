@@ -200,8 +200,50 @@ void init_panic_handlers() {
     kAFL_hypercall(HYPERCALL_KAFL_SUBMIT_PANIC, panic_kebugcheck2);
 }
 
+// Initializes Windows objects for use in fuzzing.
+int setup(){
+
+    LPCWSTR fileName = L"C:\\Temp\\test.txt";
+    HANDLE hFile = CreateFileW(
+        fileName,
+        GENERIC_WRITE,
+        0,
+        NULL,
+        CREATE_ALWAYS,
+        FILE_ATTRIBUTE_NORMAL,
+        NULL);
+
+    if (hFile == INVALID_HANDLE_VALUE) {
+        return 1;
+    }
+
+    const char* data = "Hello, Windows API!";
+    DWORD bytesWritten;
+    BOOL result = WriteFile(
+        hFile,
+        data,
+        strlen(data),
+        &bytesWritten,
+        NULL);
+
+
+    if (!result) {
+        CloseHandle(hFile);
+        return 1;
+    }
+
+    hprintf("File setup successfully!");
+
+    CloseHandle(hFile);
+
+    return 0;
+
+}
+
 int main(int argc, char** argv)
 {
+    setup();
+
     //kAFL_payload* payload_buffer = (kAFL_payload*)VirtualAlloc(0, PAYLOAD_MAX_SIZE, MEM_COMMIT, PAGE_READWRITE);
     //LPVOID payload_buffer = (LPVOID)VirtualAlloc(0, PAYLOAD_SIZE, MEM_COMMIT, PAGE_READWRITE);
     memset(jsonBuf, 0x0, PAYLOAD_MAX_SIZE);
@@ -226,7 +268,6 @@ int main(int argc, char** argv)
     kAFL_hypercall(HYPERCALL_KAFL_ACQUIRE, 0);
 
     /* kernel fuzzing */
-
     Json::Value seedJson;
     JSONCPP_STRING err;
     Json::CharReaderBuilder builder;

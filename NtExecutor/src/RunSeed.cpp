@@ -27,30 +27,30 @@ extern "C"
   {
       uint64_t result;
 asm volatile (
-    "sub $88, %%rsp\n\t"           // 88바이트(11 * 8)만큼 스택 공간 확보 (11개의 8바이트 인자)
-    "mov %[arg1], %%rcx\n\t"       // arg1을 RCX에 저장
-    "mov %[arg2], %%rdx\n\t"       // arg2를 RDX에 저장
-    "mov %[arg3], %%r8\n\t"        // arg3을 R8에 저장
-    "mov %[arg4], %%r9\n\t"        // arg4를 R9에 저장
-    "mov %[arg5], %%rax\n\t"       // arg5를 임시로 RAX에 저장
-    "mov %%rax, 40(%%rsp)\n\t"     // RAX를 RSP+40에 저장
-    "mov %[arg6], %%rax\n\t"       // arg6를 임시로 RAX에 저장
-    "mov %%rax, 48(%%rsp)\n\t"     // RAX를 RSP+48에 저장
-    "mov %[arg7], %%rax\n\t"       // arg7를 임시로 RAX에 저장
-    "mov %%rax, 56(%%rsp)\n\t"     // RAX를 RSP+56에 저장
-    "mov %[arg8], %%rax\n\t"       // arg8를 임시로 RAX에 저장
-    "mov %%rax, 64(%%rsp)\n\t"     // RAX를 RSP+64에 저장
-    "mov %[arg9], %%rax\n\t"       // arg9를 임시로 RAX에 저장
-    "mov %%rax, 72(%%rsp)\n\t"     // RAX를 RSP+72에 저장
-    "mov %[arg10], %%rax\n\t"      // arg10을 임시로 RAX에 저장
-    "mov %%rax, 80(%%rsp)\n\t"     // RAX를 RSP+80에 저장
-    "mov %[arg11], %%rax\n\t"      // arg11을 임시로 RAX에 저장
-    "mov %%rax, 88(%%rsp)\n\t"     // RAX를 RSP+88에 저장
-    "mov %[sysid], %%rax\n\t"         // SysId 값을 RAX로 이동 (전역 변수)
-    "mov %%rcx, %%r10\n\t"         // RCX 값을 R10으로 이동
-    "syscall\n\t"                  // 시스템 호출
-    "add $88, %%rsp\n\t"           // 스택 복원 (할당한 스택 프레임 제거)
-    : "=a" (result)                // 결과는 RAX에 저장됨
+    "sub $88, %%rsp\n\t"
+    "mov %[arg1], %%rcx\n\t"
+    "mov %[arg2], %%rdx\n\t"
+    "mov %[arg3], %%r8\n\t"
+    "mov %[arg4], %%r9\n\t"
+    "mov %[arg5], %%rax\n\t"
+    "mov %%rax, 40(%%rsp)\n\t"
+    "mov %[arg6], %%rax\n\t"
+    "mov %%rax, 48(%%rsp)\n\t"
+    "mov %[arg7], %%rax\n\t"
+    "mov %%rax, 56(%%rsp)\n\t"
+    "mov %[arg8], %%rax\n\t"
+    "mov %%rax, 64(%%rsp)\n\t"
+    "mov %[arg9], %%rax\n\t"
+    "mov %%rax, 72(%%rsp)\n\t"
+    "mov %[arg10], %%rax\n\t"
+    "mov %%rax, 80(%%rsp)\n\t"
+    "mov %[arg11], %%rax\n\t"
+    "mov %%rax, 88(%%rsp)\n\t"
+    "mov %[sysid], %%rax\n\t"
+    "mov %%rcx, %%r10\n\t"
+    "syscall\n\t"
+    "add $88, %%rsp\n\t"
+    : "=a" (result)
     : [arg1] "g" (arg1), [arg2] "g" (arg2), [arg3] "g" (arg3), [arg4] "g" (arg4),
       [arg5] "g" (arg5), [arg6] "g" (arg6), [arg7] "g" (arg7), [arg8] "g" (arg8),
       [arg9] "g" (arg9), [arg10] "g" (arg10), [arg11] "g" (arg11), [sysid] "m" (SysId)

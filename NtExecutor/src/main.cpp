@@ -202,8 +202,17 @@ void init_panic_handlers() {
 
 // Initializes Windows objects for use in fuzzing.
 int setup(){
+    LPCWSTR tempDir = L"C:\\Temp";
+    if (!CreateDirectoryW(tempDir, NULL)) {
+        if (GetLastError() != ERROR_ALREADY_EXISTS) {
+            hprintf("Failed to create directory\n");
+            hprintf("error code = %d\n",GetLastError());
+            return 1;
+        }
+    }
 
     LPCWSTR fileName = L"C:\\Temp\\test.txt";
+
     HANDLE hFile = CreateFileW(
         fileName,
         GENERIC_WRITE,
@@ -214,10 +223,12 @@ int setup(){
         NULL);
 
     if (hFile == INVALID_HANDLE_VALUE) {
+        hprintf("Failed to open or create file.");
+        hprintf("error code = %d\n",GetLastError());
         return 1;
     }
 
-    const char* data = "Hello, Windows API!";
+    const char* data = "Hello, kafl! Hello, kafl! Hello, kafl! Hello, kafl! Hello, kafl!";
     DWORD bytesWritten;
     BOOL result = WriteFile(
         hFile,
@@ -226,24 +237,21 @@ int setup(){
         &bytesWritten,
         NULL);
 
-
     if (!result) {
+        hprintf("Failed to write to file.\n");
+        hprintf("error code = %d\n",GetLastError());
         CloseHandle(hFile);
         return 1;
     }
 
-    hprintf("File setup successfully!");
-
     CloseHandle(hFile);
+    hprintf("Fuzz Setup successfully!\n");
 
     return 0;
-
 }
 
 int main(int argc, char** argv)
 {
-    setup();
-
     //kAFL_payload* payload_buffer = (kAFL_payload*)VirtualAlloc(0, PAYLOAD_MAX_SIZE, MEM_COMMIT, PAGE_READWRITE);
     //LPVOID payload_buffer = (LPVOID)VirtualAlloc(0, PAYLOAD_SIZE, MEM_COMMIT, PAGE_READWRITE);
     memset(jsonBuf, 0x0, PAYLOAD_MAX_SIZE);
@@ -251,6 +259,8 @@ int main(int argc, char** argv)
     init_agent_handshake();
 
     init_panic_handlers();
+
+    if(setup()) habort("Failed to setup env\n");
 
     /* this hypercall submits the current CR3 value */
     kAFL_hypercall(HYPERCALL_KAFL_SUBMIT_CR3, 0);

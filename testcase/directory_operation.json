@@ -1,0 +1,133 @@
+
+[
+    {
+      "name": "NtOpenDirectoryObject",
+      "sysnum": 88,
+      "argnum": 3,
+      "idx": 0,
+      "arg1": {
+        "kind": "inptr",
+        "id" : 0,
+        "size" : 8,
+        "val": 0
+      },
+      "arg2": { 
+        "kind": "dword",
+        "val": 1
+      },
+      "arg3" : {
+      "kind": "inptr",
+      "size" : 48,
+      "val": {
+        "kind" : "struct",
+        "val" : [
+            {
+              "offset" : 0,
+              "kind" : "dword",
+              "val" : 48
+            },
+            {
+              "offset" : 8,
+              "kind" : "qword",
+              "val" : 0
+            },
+            {
+              "offset" : 16,
+              "kind" : "inptr",
+              "size" : 16,
+              "val" : {
+                "kind" : "struct",
+                "val" : [
+                  {
+                    "offset" : 0,
+                    "kind" : "word",
+                    "val" : 20
+                  },
+                  {
+                    "offset" : 2,
+                    "kind" : "word",
+                    "val" : 22
+                  },
+                  {
+                    "offset" : 8,
+                    "kind" : "inptr",
+                    "size" : 22,
+                    "val" : {
+                      "kind" : "string",
+                      "val" : "\\KnownDlls"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "offset" : 24,
+              "kind": "dword",
+              "val": 64
+            },
+            {
+              "offset" : 32,
+              "kind": "qword",
+              "val": 0
+            },
+            {
+              "offset" : 40,
+              "kind": "qword",
+              "val": 0
+            }
+          ]
+      }
+    }
+    },
+    {
+      "name": "NtQueryDirectoryObject",
+      "sysnum": 323,
+      "argnum": 7,
+      "idx": 0,
+      "arg1": {
+        "kind": "retval",
+        "id" : 0
+      },
+      "arg2" : {
+        "kind": "inptr",
+        "id" : 2,
+        "size" : 1024,
+        "val": 0
+      },
+      "arg3" : {
+        "kind" : "dword",
+        "val" : 1024
+      },
+      "arg4" : {
+        "kind" : "byte",
+        "val" : 0
+      },
+      "arg5" : {
+        "kind" : "byte",
+        "val" : 0
+      },
+      "arg6" : {
+        "kind" : "inptr",
+        "id" : 2,
+        "size" : 4,
+        "val" : 0
+      },
+      "arg7" : {
+        "kind" : "inptr",
+        "id" : 3,
+        "size" : 4,
+        "val" : 0
+      }
+    },
+    {
+        "name": "NtClose",
+        "sysnum": 15,
+        "argnum": 1,
+        "idx": 3,
+        "arg1": {
+          "kind": "retval",
+          "id" : 0,
+          "val": 0
+        }
+      }
+]

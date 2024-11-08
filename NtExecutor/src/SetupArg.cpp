@@ -25,7 +25,7 @@ void nop(void) {
 void storeArg(Json::Value* argJson, uint64_t* curPtr, size_t ptrSize) {
     char buf[32];
     int id;
-    size_t size, width, index, offset;
+    size_t size, width, index, offset, count;
     uint64_t* ptr;
     Json::Value contentJson, arrayJson, elemJson, fieldJson;
 
@@ -76,8 +76,18 @@ void storeArg(Json::Value* argJson, uint64_t* curPtr, size_t ptrSize) {
             elemJson = arrayJson.get(index, NULL);
             offset = elemJson.get("offset", NULL).asInt();
             uint64_t* offset_ptr = (uint64_t*)((byte*)curPtr + offset);
-            storeArg(&elemJson, offset_ptr, ptrSize - offset); 
+            storeArg(&elemJson, offset_ptr, ptrSize - offset);
         }
+    }
+    else if(strcmp(buf, "array") == 0) {
+        elemJson = argJson->get("val", NULL);
+        count = argJson->get("count", NULL).asInt();
+        width = argJson->get("width", NULL).asInt();
+        for (index = 0; index < count; ++index) {
+            uint64_t* offset_ptr = (uint64_t*)((byte*)curPtr + (width * index));
+            storeArg(&elemJson, offset_ptr, width);
+        }
+
     }
     else {
         printf("Unexpected argument kind to store: %s\n", buf);
@@ -110,7 +120,7 @@ uint64_t prepareArg(Json::Value* argJson) {
     size = argJson->get("size", NULL).asInt();
     ptr = (uint64_t*)alloc(size);
     if (argJson->isMember("id")) {
-        id = argJson->get("id", 0).asInt(); 
+        id = argJson->get("id", 0).asInt();
         registerOutputPtr(ptr, id);
     }
     if (argJson->isMember("val")) {

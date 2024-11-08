@@ -5,7 +5,7 @@
     "argnum": 6,
     "idx": 0,
     "arg1": {
-      "kind": "inptr",
+      "kind": "ptr",
       "id" : 0,
       "size" : 8,
       "val": 0
@@ -15,7 +15,7 @@
       "val": 2148532480
     },
     "arg3" : {
-      "kind": "inptr",
+      "kind": "ptr",
       "size" : 48,
       "val": {
         "kind" : "struct",
@@ -32,7 +32,7 @@
             },
             {
               "offset" : 16,
-              "kind" : "inptr",
+              "kind" : "ptr",
               "size" : 16,
               "val" : {
                 "kind" : "struct",
@@ -49,7 +49,7 @@
                   },
                   {
                     "offset" : 8,
-                    "kind" : "inptr",
+                    "kind" : "ptr",
                     "size" : 42,
                     "val" : {
                       "kind" : "string",
@@ -78,7 +78,7 @@
       }
     },
     "arg4": {
-      "kind": "inptr",
+      "kind": "ptr",
       "id" : 1,
       "size" : 16,
       "val": 0
@@ -103,13 +103,13 @@
       "val": 0
     },
     "arg2": {
-      "kind": "inptr",
+      "kind": "ptr",
       "id" : 3,
       "size" : 16,
       "val": 0
     },
     "arg3" : {
-      "kind": "inptr",
+      "kind": "ptr",
       "id" : 2,
       "size" : 40,
       "val": 0
@@ -135,13 +135,13 @@
       "val": 0
     },
     "arg2": {
-      "kind": "inptr",
+      "kind": "ptr",
       "id" : 4,
       "size" : 16,
       "val": 0
     },
     "arg3": {
-      "kind": "inptr",
+      "kind": "ptr",
       "size" : 40,
       "val": {
         "kind" : "struct",
@@ -237,13 +237,13 @@
       "val" : 0
     },
     "arg5": {
-      "kind": "inptr",
+      "kind": "ptr",
       "id" : 4,
       "size" : 16,
       "val": 0
     },
     "arg6": {
-      "kind": "inptr",
+      "kind": "ptr",
       "size" : 10,
       "id" : 5,
       "val": 0
@@ -254,7 +254,7 @@
       "val": 10
     },
     "arg8": {
-      "kind": "inptr",
+      "kind": "ptr",
       "size" : 8,
       "val" : {
         "kind" : "struct",

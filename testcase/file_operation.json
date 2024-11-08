@@ -8,7 +8,10 @@
       "kind": "ptr",
       "id" : 0,
       "size" : 8,
-      "val": 0
+      "val": {
+        "kind": "dword",
+        "val": 0
+      }
     },
     "arg2": { 
       "kind": "dword",
@@ -80,8 +83,7 @@
     "arg4": {
       "kind": "ptr",
       "id" : 1,
-      "size" : 16,
-      "val": 0
+      "size" : 16
     },
     "arg5": {
       "kind": "dword",
@@ -105,14 +107,12 @@
     "arg2": {
       "kind": "ptr",
       "id" : 3,
-      "size" : 16,
-      "val": 0
+      "size" : 16
     },
     "arg3" : {
       "kind": "ptr",
       "id" : 2,
-      "size" : 40,
-      "val": 0
+      "size" : 40
     },
     "arg4" : {
       "kind": "dword",
@@ -137,8 +137,7 @@
     "arg2": {
       "kind": "ptr",
       "id" : 4,
-      "size" : 16,
-      "val": 0
+      "size" : 16
     },
     "arg3": {
       "kind": "ptr",
@@ -239,14 +238,12 @@
     "arg5": {
       "kind": "ptr",
       "id" : 4,
-      "size" : 16,
-      "val": 0
+      "size" : 16
     },
     "arg6": {
       "kind": "ptr",
       "size" : 10,
-      "id" : 5,
-      "val": 0
+      "id" : 5
     },
     "arg7": {
       "kind": "dword",

@@ -1,95 +1,93 @@
 [
-    {
-      "name": "NtCreateThreadEx",
-      "sysnum": 193,
-      "argnum": 11,
-      "idx": 0,
-      "arg1": {
-        "kind": "inptr",
-        "id" : 0,
-        "size" : 8,
-        "val": 0
-      },
-      "arg2": {
-        "kind": "dword",
-        "val": 2097151
-      },
-      "arg3" : {
-        "kind": "dword",
-        "val": 0
-      },
-      "arg4" : {
-        "kind": "qword",
-        "val": 18446744073709551615
-      },
-      "arg5" : {
-        "kind": "funcptr",
-        "val" : 0
-      },
-      "arg6" : {
-        "kind": "dword",
-        "val": 0
-      },
-      "arg7" : {
-        "kind": "dword",
-        "val": 0
-      },
-      "arg8" : {
-        "kind": "dword",
-        "val": 0
-      },
-      "arg9" : {
-        "kind": "dword",
-        "val": 0
-      },
-      "arg10" : {
-        "kind": "dword",
-        "val": 0
-      },
-      "arg11" : {
-        "kind": "dword",
-        "val": 0
-      }
+  {
+    "name": "NtCreateThreadEx",
+    "sysnum": 193,
+    "argnum": 11,
+    "idx": 0,
+    "arg1": {
+      "kind": "ptr",
+      "id" : 0,
+      "size" : 8
     },
-  
-    {
-      "name": "NtQueueApcThread",
-      "sysnum": 69,  
-      "argnum": 5,
-      "idx": 1,
-      "arg1": {
-        "kind": "retval",
-        "id" : 0,
-        "val": 0
-      },
-      "arg2": {
-        "kind": "funcptr",
-        "val": 0
-      },
-      "arg3" : {
-        "kind": "dword",
-        "val": 0
-      },
-      "arg4" : {
-        "kind": "dword",
-        "val": 0
-      },
-      "arg5" : {
-        "kind": "dword",
-        "val": 0
-      }
+    "arg2": {
+      "kind": "dword",
+      "val": 2097151
     },
-    {
-      "name": "NtClose",
-      "sysnum": 15,  
-      "argnum": 1,
-      "idx": 2,
-      "arg1": {
-        "kind": "retval",
-        "id" : 0,
-        "val": 0
-      }
+    "arg3" : {
+      "kind": "dword",
+      "val": 0
+    },
+    "arg4" : {
+      "kind": "qword",
+      "val": 18446744073709551615
+    },
+    "arg5" : {
+      "kind": "funcptr",
+      "val" : 0
+    },
+    "arg6" : {
+      "kind": "dword",
+      "val": 0
+    },
+    "arg7" : {
+      "kind": "dword",
+      "val": 0
+    },
+    "arg8" : {
+      "kind": "dword",
+      "val": 0
+    },
+    "arg9" : {
+      "kind": "dword",
+      "val": 0
+    },
+    "arg10" : {
+      "kind": "dword",
+      "val": 0
+    },
+    "arg11" : {
+      "kind": "dword",
+      "val": 0
     }
-  
-  ]
-   
+  },
+
+  {
+    "name": "NtQueueApcThread",
+    "sysnum": 69,
+    "argnum": 5,
+    "idx": 1,
+    "arg1": {
+      "kind": "retval",
+      "id" : 0,
+      "val": 0
+    },
+    "arg2": {
+      "kind": "funcptr",
+      "val": 0
+    },
+    "arg3" : {
+      "kind": "dword",
+      "val": 0
+    },
+    "arg4" : {
+      "kind": "dword",
+      "val": 0
+    },
+    "arg5" : {
+      "kind": "dword",
+      "val": 0
+    }
+  },
+  {
+    "name": "NtClose",
+    "sysnum": 15,
+    "argnum": 1,
+    "idx": 2,
+    "arg1": {
+      "kind": "retval",
+      "id" : 0,
+      "val": 0
+    }
+  }
+
+]

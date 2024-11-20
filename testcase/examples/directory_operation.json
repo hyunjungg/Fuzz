@@ -7,8 +7,11 @@
     "idx": 0,
     "arg1": {
       "kind": "ptr",
-      "id" : 0,
-      "size" : 8
+      "size" : 8,
+      "val": {
+        "kind": "rsc",
+        "id": 0
+      }
     },
     "arg2": {
       "kind": "dword",
@@ -89,7 +92,6 @@
     },
     "arg2" : {
       "kind": "ptr",
-      "id" : 2,
       "size" : 1024
     },
     "arg3" : {
@@ -106,12 +108,10 @@
     },
     "arg6" : {
       "kind" : "ptr",
-      "id" : 2,
       "size" : 4
     },
     "arg7" : {
       "kind" : "ptr",
-      "id" : 3,
       "size" : 4
     }
   },

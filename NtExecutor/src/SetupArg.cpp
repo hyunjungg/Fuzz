@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include "json/json.h"
-#include <windows.h>
+#include <Windows.h>
 #include "Config.h"
 #include "Alloc.h"
 #include "Output.h"
@@ -59,15 +59,16 @@ void storeArg(Json::Value* argJson, uint64_t* curPtr, size_t ptrSize) {
 
         size = argJson->get("size", NULL).asInt();
         ptr = (uint64_t*)alloc(size);
-        if (argJson->isMember("id")) {
-            id = argJson->get("id", 0).asInt();
-            registerOutputPtr(ptr, id);
-        }
         if (argJson->isMember("val")) {
             contentJson = argJson->get("val", NULL);
             storeArg(&contentJson, ptr, size);
         }
         *(uint64_t**)curPtr = ptr;
+
+    }
+    else if (strcmp(buf, "rsc") == 0) {
+        id = argJson->get("id", NULL).asInt();
+        registerOutputPtr(curPtr, id);
 
     }
     else if (strcmp(buf, "struct") == 0) {
@@ -76,7 +77,7 @@ void storeArg(Json::Value* argJson, uint64_t* curPtr, size_t ptrSize) {
             elemJson = arrayJson.get(index, NULL);
             offset = elemJson.get("offset", NULL).asInt();
             uint64_t* offset_ptr = (uint64_t*)((byte*)curPtr + offset);
-            storeArg(&elemJson, offset_ptr, ptrSize - offset); 
+            storeArg(&elemJson, offset_ptr, ptrSize - offset);
         }
     }
     else if(strcmp(buf, "array") == 0) {
@@ -87,6 +88,7 @@ void storeArg(Json::Value* argJson, uint64_t* curPtr, size_t ptrSize) {
             uint64_t* offset_ptr = (uint64_t*)((byte*)curPtr + (width * index));
             storeArg(&elemJson, offset_ptr, width);
         }
+
     }
     else {
         printf("Unexpected argument kind to store: %s\n", buf);
@@ -103,6 +105,7 @@ uint64_t prepareArg(Json::Value* argJson) {
   Json::Value contentJson;
 
   strncpy(buf, argJson->get("kind", NULL).asCString(), sizeof(buf));
+  printf("kind : %s \n", buf);
 
   if (strcmp(buf, "funcptr") == 0) {
     return (uint64_t)nop;
@@ -117,10 +120,6 @@ uint64_t prepareArg(Json::Value* argJson) {
   else if (strcmp(buf, "ptr") == 0) {
     size = argJson->get("size", NULL).asInt();
     ptr = (uint64_t*)alloc(size);
-    if (argJson->isMember("id")) {
-        id = argJson->get("id", 0).asInt(); 
-        registerOutputPtr(ptr, id);
-    }
     if (argJson->isMember("val")) {
         contentJson = argJson->get("val", NULL);
         storeArg(&contentJson, ptr, size);

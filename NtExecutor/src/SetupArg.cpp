@@ -59,15 +59,16 @@ void storeArg(Json::Value* argJson, uint64_t* curPtr, size_t ptrSize) {
 
         size = argJson->get("size", NULL).asInt();
         ptr = (uint64_t*)alloc(size);
-        if (argJson->isMember("id")) {
-            id = argJson->get("id", 0).asInt();
-            registerOutputPtr(ptr, id);
-        }
         if (argJson->isMember("val")) {
             contentJson = argJson->get("val", NULL);
             storeArg(&contentJson, ptr, size);
         }
         *(uint64_t**)curPtr = ptr;
+
+    }
+    else if (strcmp(buf, "rsc") == 0) {
+        id = argJson->get("id", NULL).asInt();
+        registerOutputPtr(curPtr, id);
 
     }
     else if (strcmp(buf, "struct") == 0) {
@@ -119,10 +120,6 @@ uint64_t prepareArg(Json::Value* argJson) {
   else if (strcmp(buf, "ptr") == 0) {
     size = argJson->get("size", NULL).asInt();
     ptr = (uint64_t*)alloc(size);
-    if (argJson->isMember("id")) {
-        id = argJson->get("id", 0).asInt();
-        registerOutputPtr(ptr, id);
-    }
     if (argJson->isMember("val")) {
         contentJson = argJson->get("val", NULL);
         storeArg(&contentJson, ptr, size);

@@ -29,8 +29,8 @@
             },
             {
               "offset" : 8,
-              "kind" : "qword",
-              "val" : 0
+              "kind" : "rsc",
+              "id" : 1
             },
             {
               "offset" : 16,

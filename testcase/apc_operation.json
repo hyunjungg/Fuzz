@@ -6,8 +6,11 @@
     "idx": 0,
     "arg1": {
       "kind": "ptr",
-      "id" : 0,
-      "size" : 8
+      "size" : 8,
+      "val": {
+        "kind": "rsc",
+        "id": 0
+      }
     },
     "arg2": {
       "kind": "dword",
@@ -58,8 +61,7 @@
     "idx": 1,
     "arg1": {
       "kind": "retval",
-      "id" : 0,
-      "val": 0
+      "id" : 0
     },
     "arg2": {
       "kind": "funcptr",

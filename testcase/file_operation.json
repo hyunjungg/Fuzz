@@ -6,11 +6,10 @@
     "idx": 0,
     "arg1": {
       "kind": "ptr",
-      "id" : 0,
       "size" : 8,
       "val": {
-        "kind": "dword",
-        "val": 0
+        "kind": "rsc",
+        "id": 0
       }
     },
     "arg2": { 
@@ -82,7 +81,6 @@
     },
     "arg4": {
       "kind": "ptr",
-      "id" : 1,
       "size" : 16
     },
     "arg5": {
@@ -101,17 +99,14 @@
     "idx": 1,
     "arg1": {
       "kind": "retval",
-      "id" : 0,
-      "val": 0
+      "id" : 0
     },
     "arg2": {
       "kind": "ptr",
-      "id" : 3,
       "size" : 16
     },
     "arg3" : {
       "kind": "ptr",
-      "id" : 2,
       "size" : 40
     },
     "arg4" : {
@@ -131,12 +126,10 @@
     "idx": 2,
     "arg1": {
       "kind": "retval",
-      "id" : 0,
-      "val": 0
+      "id" : 0
     },
     "arg2": {
       "kind": "ptr",
-      "id" : 4,
       "size" : 16
     },
     "arg3": {
@@ -220,8 +213,7 @@
     "idx": 2,
     "arg1": {
       "kind": "retval",
-      "id" : 0,
-      "val": 0
+      "id" : 0
     },
     "arg2": {
       "kind": "qword",
@@ -237,13 +229,11 @@
     },
     "arg5": {
       "kind": "ptr",
-      "id" : 4,
       "size" : 16
     },
     "arg6":{
       "kind": "ptr",
       "size" : 24,
-      "id" : 5,
       "val" : {
         "kind" : "array",
         "count" : 6,
@@ -285,8 +275,7 @@
     "idx": 3,
     "arg1": {
       "kind": "retval",
-      "id" : 0,
-      "val": 0
+      "id" : 0
     }
   }
 
